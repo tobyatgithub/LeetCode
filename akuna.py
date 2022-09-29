@@ -30,6 +30,7 @@ unusual_sort([1,1,1,2,3])
 
 
 #%%
+def whatever(n, intList):
     delta = n # initalize the int to store difference between sum and n
     if sum(intList) < n:
         return False #impossible
