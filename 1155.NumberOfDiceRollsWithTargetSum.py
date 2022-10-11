@@ -21,3 +21,4 @@ def numRollsToTarget(n: int, k: int, target: int) -> int:
 
 
 numRollsToTarget(30, 30, 500)
+
