@@ -78,7 +78,7 @@ class Solution:
             ans = math.inf
             for to_i, price_i in adj[node]:
                 # ans = min(ans, dfs(to_i, priceSoFar+price_i, stepSoFar+1))
-                ans = dfs(to_i, priceSoFar+ price_i, stepSoFar+1, pathSoFar + "-" + str(to_i)) + price_i
+                ans = dfs(to_i, priceSoFar, stepSoFar+1, pathSoFar + "-" + str(to_i)) + price_i
 
             cache[(node, stepSoFar)] = [ans, pathSoFar+"-"+str(to_i)]
                     # print(cache)
@@ -103,20 +103,20 @@ import networkx as nx
 G = nx.Graph()
 
 for source, destination, weight in testFLights:
-    G.add_edge(str(source), str(destination), weight)
+    G.add_edge(str(source), str(destination), weight=weight)
 
 elarge = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] > 0.5]
 esmall = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] <= 0.5]
 
-pos = nx.spring_layout(G, seed=7)  # positions for all nodes - seed for reproducibility
+pos = nx.spring_layout(G, seed=1)  # positions for all nodes - seed for reproducibility
 
 # nodes
 nx.draw_networkx_nodes(G, pos, node_size=700)
 
 # edges
-nx.draw_networkx_edges(G, pos, edgelist=elarge, width=6)
+nx.draw_networkx_edges(G, pos, edgelist=elarge, width=4)
 nx.draw_networkx_edges(
-    G, pos, edgelist=esmall, width=6, alpha=0.5, edge_color="b", style="dashed"
+    G, pos, edgelist=esmall, width=4, alpha=0.5, edge_color="b", style="dashed"
 )
 
 # node labels
