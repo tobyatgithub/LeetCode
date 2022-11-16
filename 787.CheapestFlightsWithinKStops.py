@@ -100,7 +100,7 @@ print()
 import matplotlib.pyplot as plt
 import networkx as nx
 
-G = nx.Graph()
+G = nx.DiGraph()
 
 for source, destination, weight in testFLights:
     G.add_edge(str(source), str(destination), weight=weight)
@@ -114,10 +114,22 @@ pos = nx.spring_layout(G, seed=1)  # positions for all nodes - seed for reproduc
 nx.draw_networkx_nodes(G, pos, node_size=700)
 
 # edges
-nx.draw_networkx_edges(G, pos, edgelist=elarge, width=4)
-nx.draw_networkx_edges(
-    G, pos, edgelist=esmall, width=4, alpha=0.5, edge_color="b", style="dashed"
-)
+# nx.draw_networkx_edges(G, pos, edgelist=elarge, width=4, arrowstyle="->", arrowsize=10)
+nx.draw_networkx_edges(G, pos, node_size=300, width=4, arrowstyle="->", arrowsize=10)
+# nx.draw_networkx_edges(
+#     G, pos, edgelist=esmall, width=4, alpha=0.5, edge_color="b", style="dashed"
+# )
+# edges = nx.draw_networkx_edges(
+#     G,
+#     pos,
+#     node_size=node_sizes,
+#     arrowstyle="->",
+#     arrowsize=10,
+#     edge_color=edge_colors,
+#     edge_cmap=cmap,
+#     width=2,
+# )
+
 
 # node labels
 nx.draw_networkx_labels(G, pos, font_size=20, font_family="sans-serif")
