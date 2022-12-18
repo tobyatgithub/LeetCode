@@ -22,14 +22,14 @@ class Solution:
         while l < r:
             numL = sortedNums[l]
             numR = sortedNums[r]
-            if numL + numR == -target:
+            if numL + numR + target == 0:
                 toAdd = [numL, numR, target]
                 if toAdd not in res:
                     res.append(toAdd)
                 l += 1
                 # r -= 1
-            if numL + numR < target:
+            if numL + numR + target < 0:
                 l += 1
-            if numL + numR > target:
+            if numL + numR + target > 0:
                 r -= 1
         return res
